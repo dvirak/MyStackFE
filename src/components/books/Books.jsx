@@ -1,3 +1,13 @@
+// import { useEffect, useState } from "react";
+import useRetrieveBookList from "./useRetrieveBookList";
+import BooksTable from "./BooksTable";
+
 export default function Books() {
-  return <span>Ok so we got here</span>;
+  const bookList = useRetrieveBookList();
+
+  return (
+    <>
+      <BooksTable bookList={bookList} />
+    </>
+  );
 }
