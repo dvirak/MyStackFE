@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getAllBooks from "../../API/BooksAPI/getAllBooks";
-import Books from "./Books";
+import Books from "../../Pages/Books";
 
 export default function AllBooks() {
   const [bookList, setBookList] = useState([]);
