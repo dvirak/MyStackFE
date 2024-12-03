@@ -1,5 +1,6 @@
 import Login from "../components/users/LogIn";
-import Account from "../components/users/LoginHelpers/Account";
+import Account from "../components/users/Account";
+import Register from "../components/users/Register";
 
 export default function AccountPage() {
   const userKey = localStorage.getItem("current-user-key");
@@ -11,7 +12,7 @@ export default function AccountPage() {
       ) : (
         <>
           <Login />
-          {/* <Register /> */}
+          <Register />
         </>
       )}
     </div>
