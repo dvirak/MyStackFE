@@ -1,6 +1,6 @@
 const baseURL = "http://localhost:3000/api/";
 
-export async function registerAPI(user) {
+export default async function registerAPI(user) {
   try {
     const response = await fetch(`${baseURL}/users/register`, {
       method: "POST",

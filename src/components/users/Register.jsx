@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { loginAPI } from "../../API/UsersAPI/loginAPI";
-import { registerAPI } from "../../API/UsersAPI/registerAPI";
+import { registerAPI } from "../../API/UsersAPI";
 
 export default function Register() {
   const [username, setUsername] = useState("");
