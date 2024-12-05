@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginAPI } from "../../API/UsersAPI/loginAPI";
+import { loginAPI } from "../../API/UsersAPI";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -16,11 +16,19 @@ export default function Login() {
     const response = await loginAPI(user);
     if (response.token) {
       const token = response?.token;
+      const userID = response?.user.id;
       localStorage.setItem("current-user-key", token);
+      localStorage.setItem("user-id", userID);
       location.reload();
     } else {
       setErrorMessage(response?.message);
     }
+    // console.log("RESPONSE: ");
+    // const printUser = parseInt(localStorage.getItem("user-id"));
+    // console.log(printUser);
+    // console.log(typeof printUser);
+    // console.log("Parsed User: ");
+    // console.log(JSON.parse(printUser));
   }
 
   return (
