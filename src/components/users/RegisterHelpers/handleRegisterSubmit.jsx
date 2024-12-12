@@ -2,21 +2,21 @@ import { registerAPI } from "../../../API/UsersAPI";
 
 export default async function handleSubmit(
   e,
-  user,
-  passwords,
-  setPassword,
+  userData,
+  setUserData,
   setErrorMessage
 ) {
   e.preventDefault();
 
-  if (passwords.password1 === passwords.password2) {
-    setPassword(passwords.password1);
+  if (userData.password1 === userData.password2) {
+    setUserData((prev) => ({ ...prev, password: userData.password1 }));
   } else {
     setErrorMessage("Please ensure passwords match");
     return;
   }
 
-  const response = await registerAPI(user);
+  console.log(userData);
+  const response = await registerAPI(userData);
 
   if (response.token) {
     const token = response?.token;
