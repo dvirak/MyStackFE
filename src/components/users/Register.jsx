@@ -2,47 +2,37 @@ import { useState } from "react";
 import handleSubmit from "./RegisterHelpers/handleRegisterSubmit";
 
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
-  const [password, setPassword] = useState("");
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [preferred_name, setPreferredName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [userData, setUserData] = useState({
+    username: "",
+    password1: "",
+    password2: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    preferred_name: "",
+    phone: "",
+    email: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
-  const user = {
-    username: username,
-    password: password,
-    first_name: first_name,
-    last_name: last_name,
-    preferred_name: preferred_name,
-    phone: phone,
-    email: email,
-  };
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
+  }
 
   return (
     <form
-      onSubmit={(e) =>
-        handleSubmit(
-          e,
-          user,
-          { password1, password2 },
-          setPassword,
-          setErrorMessage
-        )
-      }
+      onSubmit={(e) => handleSubmit(e, userData, setUserData, setErrorMessage)}
     >
       <h3>Log In</h3>
       <label>
         Username:
         <input
-          type="username"
+          type="text"
           id="username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          name="username"
+          value={userData.username}
+          onChange={handleInputChange}
         />
       </label>
       <label>
@@ -50,8 +40,9 @@ export default function Register() {
         <input
           type="password"
           id="password1"
-          onChange={(e) => setPassword1(e.target.value)}
-          value={password1}
+          name="password1"
+          value={userData.password1}
+          onChange={handleInputChange}
         />
       </label>
       <label>
@@ -59,8 +50,9 @@ export default function Register() {
         <input
           type="password"
           id="password2"
-          onChange={(e) => setPassword2(e.target.value)}
-          value={password2}
+          name="password2"
+          value={userData.password2}
+          onChange={handleInputChange}
         />
       </label>{" "}
       <label>
@@ -68,8 +60,9 @@ export default function Register() {
         <input
           type="first_name"
           id="first_name"
-          onChange={(e) => setFirstName(e.target.value)}
-          value={first_name}
+          name="first_name"
+          value={userData.first_name}
+          onChange={handleInputChange}
         />
       </label>{" "}
       <label>
@@ -77,8 +70,9 @@ export default function Register() {
         <input
           type="last_name"
           id="last_name"
-          onChange={(e) => setLastName(e.target.value)}
-          value={last_name}
+          name="last_name"
+          value={userData.last_name}
+          onChange={handleInputChange}
         />
       </label>{" "}
       <label>
@@ -86,8 +80,9 @@ export default function Register() {
         <input
           type="preferred_name"
           id="preferred_name"
-          onChange={(e) => setPreferredName(e.target.value)}
-          value={preferred_name}
+          name="preferred_name"
+          value={userData.preferred_name}
+          onChange={handleInputChange}
         />
       </label>{" "}
       <label>
@@ -95,8 +90,9 @@ export default function Register() {
         <input
           type="phone"
           id="phone"
-          onChange={(e) => setPhone(e.target.value)}
-          value={phone}
+          name="phone"
+          value={userData.phone}
+          onChange={handleInputChange}
         />
       </label>{" "}
       <label>
@@ -104,8 +100,9 @@ export default function Register() {
         <input
           type="email"
           id="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          name="email"
+          value={userData.email}
+          onChange={handleInputChange}
         />
       </label>
       <button>
