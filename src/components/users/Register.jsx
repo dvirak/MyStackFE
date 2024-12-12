@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { registerAPI } from "../../API/UsersAPI";
+import handleSubmit from "./RegisterHelpers/handleRegisterSubmit";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -23,25 +23,19 @@ export default function Register() {
     email: email,
   };
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const response = await registerAPI(user);
-    if (password1 === password2) {
-      setPassword(password1);
-    } else {
-      setErrorMessage("Please ensure passwords match");
-    }
-    if (response.token) {
-      const token = response?.token;
-      localStorage.setItem("current-user-key", token);
-      location.reload();
-    } else {
-      setErrorMessage(response?.message);
-    }
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) =>
+        handleSubmit(
+          e,
+          user,
+          password1,
+          password2,
+          setPassword,
+          setErrorMessage
+        )
+      }
+    >
       <h3>Log In</h3>
       <label>
         Username:
