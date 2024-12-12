@@ -29,8 +29,7 @@ export default function Register() {
         handleSubmit(
           e,
           user,
-          password1,
-          password2,
+          { password1, password2 },
           setPassword,
           setErrorMessage
         )
