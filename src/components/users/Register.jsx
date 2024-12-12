@@ -1,5 +1,5 @@
 import { useState } from "react";
-import handleSubmit from "./RegisterHelpers/handleRegisterSubmit";
+import handleRegisterSubmit from "./RegisterHelpers/handleRegisterSubmit";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -21,9 +21,7 @@ export default function Register() {
   }
 
   return (
-    <form
-      onSubmit={(e) => handleSubmit(e, userData, setUserData, setErrorMessage)}
-    >
+    <form onSubmit={(e) => handleRegisterSubmit(e, userData, setErrorMessage)}>
       <h3>Log In</h3>
       <label>
         Username:
@@ -31,7 +29,7 @@ export default function Register() {
           type="text"
           id="username"
           name="username"
-          value={userData.username}
+          value={userData.username || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -41,7 +39,7 @@ export default function Register() {
           type="password"
           id="password1"
           name="password1"
-          value={userData.password1}
+          value={userData.password1 || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -51,37 +49,37 @@ export default function Register() {
           type="password"
           id="password2"
           name="password2"
-          value={userData.password2}
+          value={userData.password2 || ""}
           onChange={handleInputChange}
         />
       </label>{" "}
       <label>
         First Name:
         <input
-          type="first_name"
+          type="text"
           id="first_name"
           name="first_name"
-          value={userData.first_name}
+          value={userData.first_name || ""}
           onChange={handleInputChange}
         />
       </label>{" "}
       <label>
         Last Name:
         <input
-          type="last_name"
+          type="text"
           id="last_name"
           name="last_name"
-          value={userData.last_name}
+          value={userData.last_name || ""}
           onChange={handleInputChange}
         />
       </label>{" "}
       <label>
         Preferred Name:
         <input
-          type="preferred_name"
+          type="text"
           id="preferred_name"
           name="preferred_name"
-          value={userData.preferred_name}
+          value={userData.preferred_name || ""}
           onChange={handleInputChange}
         />
       </label>{" "}
@@ -91,7 +89,7 @@ export default function Register() {
           type="phone"
           id="phone"
           name="phone"
-          value={userData.phone}
+          value={userData.phone || ""}
           onChange={handleInputChange}
         />
       </label>{" "}
@@ -101,7 +99,7 @@ export default function Register() {
           type="email"
           id="email"
           name="email"
-          value={userData.email}
+          value={userData.email || ""}
           onChange={handleInputChange}
         />
       </label>

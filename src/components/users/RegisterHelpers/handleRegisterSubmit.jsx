@@ -1,28 +1,29 @@
 import { registerAPI } from "../../../API/UsersAPI";
+import validateRegisterData from "./validateRegisterData";
 
-export default async function handleSubmit(
+export default async function handleRegisterSubmit(
   e,
   userData,
-  setUserData,
   setErrorMessage
 ) {
   e.preventDefault();
 
-  if (userData.password1 === userData.password2) {
-    setUserData((prev) => ({ ...prev, password: userData.password1 }));
-  } else {
-    setErrorMessage("Please ensure passwords match");
+  const registerDataError = validateRegisterData(userData);
+  if (registerDataError) {
+    console.log("DID WE GET HGERE");
+    console.log("registerDataError: " + registerDataError);
+    setErrorMessage(registerDataError);
     return;
-  }
-
-  console.log(userData);
-  const response = await registerAPI(userData);
-
-  if (response.token) {
-    const token = response?.token;
-    localStorage.setItem("current-user-key", token);
-    location.reload();
   } else {
-    setErrorMessage(response?.message);
+    const updatedUserData = { ...userData, password: userData.password1 };
+    const response = await registerAPI(updatedUserData);
+
+    if (response.token) {
+      const token = response?.token;
+      localStorage.setItem("current-user-key", token);
+      location.reload();
+    } else {
+      setErrorMessage(response?.message);
+    }
   }
 }
