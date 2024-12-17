@@ -4,8 +4,6 @@ import determineType from "./determineType";
 export default function InputField({ fieldName, userData, setUserData }) {
   const type = determineType(fieldName);
 
-  if (fieldName == "password") return null;
-
   return (
     <label>
       {`${capitalizeWords(fieldName)}: `}
