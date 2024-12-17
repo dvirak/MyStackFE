@@ -1,6 +1,7 @@
 // ! ---------------- IMPORTED MODULES -------------------------
 import { useState } from "react";
 import handleLoginSubmit from "./LoginHelpers/handleLoginSubmit";
+import InputField from "./UserHelpers/InputField";
 // ! -----------------------------------------------------------
 
 /**
@@ -15,46 +16,26 @@ import handleLoginSubmit from "./LoginHelpers/handleLoginSubmit";
  */
 export default function Login() {
   // State for the username input field.
-  const [username, setUsername] = useState("");
-
-  // State for the password input field.
-  const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+  });
 
   // State for any error message that may be displayed upon login failure.
   const [errorMessage, setErrorMessage] = useState("");
 
-  // User object constructed from state for submission.
-  const user = {
-    username: username,
-    password: password,
-  };
-
   return (
-    <form onSubmit={(e) => handleLoginSubmit(e, user, setErrorMessage)}>
-      {/* Form heading */}
+    <form onSubmit={(e) => handleLoginSubmit(e, userData, setErrorMessage)}>
       <h3>Log In</h3>
 
-      {/* Username input */}
-      <label>
-        Username:
-        <input
-          type="username" // Set as 'username' for semantic purposes.
-          id="username"
-          onChange={(e) => setUsername(e.target.value)} // Updates state with user input.
-          value={username} // Binds the input value to the username state.
+      {Object.keys(userData).map((key) => (
+        <InputField
+          key={key}
+          fieldName={key}
+          userData={userData}
+          setUserData={setUserData}
         />
-      </label>
-
-      {/* Password input */}
-      <label>
-        Password:
-        <input
-          type="password" // Set as 'password' for secure input.
-          id="password"
-          onChange={(e) => setPassword(e.target.value)} // Updates state with user input.
-          value={password} // Binds the input value to the password state.
-        />
-      </label>
+      ))}
 
       {/* Submit button */}
       <button>
