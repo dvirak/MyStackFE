@@ -10,8 +10,6 @@ export default async function handleRegisterSubmit(
 
   const registerDataError = validateRegisterData(userData);
   if (registerDataError) {
-    console.log("DID WE GET HGERE");
-    console.log("registerDataError: " + registerDataError);
     setErrorMessage(registerDataError);
     return;
   } else {
