@@ -1,5 +1,6 @@
 import { useState } from "react";
 import handleRegisterSubmit from "./RegisterHelpers/handleRegisterSubmit";
+import InputField from "./UserHelpers/InputField";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -15,15 +16,34 @@ export default function Register() {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setUserData((prev) => ({ ...prev, [name]: value }));
-  }
-
   return (
     <form onSubmit={(e) => handleRegisterSubmit(e, userData, setErrorMessage)}>
       <h3>Log In</h3>
-      <label>
+
+      {Object.keys(userData).map((key) => (
+        <InputField
+          key={key}
+          fieldName={key}
+          userData={userData}
+          setUserData={setUserData}
+        />
+      ))}
+
+      <button>
+        <span className="login-button">Register</span>
+      </button>
+      <h4>{errorMessage}</h4>
+    </form>
+  );
+}
+
+// function handleInputChange(e) {
+//   const { name, value } = e.target;
+//   setUserData((prev) => ({ ...prev, [name]: value }));
+// }
+
+{
+  /* <label>
         Username:
         <input
           type="text"
@@ -102,11 +122,5 @@ export default function Register() {
           value={userData.email || ""}
           onChange={handleInputChange}
         />
-      </label>
-      <button>
-        <span className="login-button">Register</span>
-      </button>
-      <h4>{errorMessage}</h4>
-    </form>
-  );
+      </label> */
 }
