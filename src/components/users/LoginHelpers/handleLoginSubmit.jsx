@@ -1,5 +1,6 @@
+// ! ----------------- IMPORTED FILES --------------------------
 import { loginAPI } from "../../../API/UsersAPI";
-
+// ! -----------------------------------------------------------
 /**
  * Description: Handles form submission by calling the `loginAPI` function.
  * If the response contains a token, it saves the token and user ID to `localStorage` and reloads the page.

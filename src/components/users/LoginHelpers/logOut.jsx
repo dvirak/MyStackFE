@@ -1,11 +1,3 @@
-// ! ----------------- IMPORTED FILES --------------------------
-// None
-// ! -----------------------------------------------------------
-
-// ! ---------------- IMPORTED MODULES -------------------------
-// None
-// ! -----------------------------------------------------------
-
 /**
  * Description: Handles the logout process by clearing the user's key from local storage and refreshing the page.
  * If the user is not logged in, an error message is set instead.
