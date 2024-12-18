@@ -1,7 +1,10 @@
-// ! ---------------- IMPORTED MODULES -------------------------
-import { useState } from "react";
+// ! ----------------- IMPORTED FILES --------------------------
 import handleLoginSubmit from "./LoginHelpers/handleLoginSubmit";
 import InputField from "./UserHelpers/InputField";
+// ! -----------------------------------------------------------
+
+// ! ---------------- IMPORTED MODULES -------------------------
+import { useState } from "react";
 // ! -----------------------------------------------------------
 
 /**
@@ -10,24 +13,26 @@ import InputField from "./UserHelpers/InputField";
  *
  * @returns {JSX.Element} The rendered login form component.
  *
- * @precondition The `loginAPI` function should be correctly implemented and imported.
+ * @precondition The `handleLoginSubmit` function and `InputField` component must be correctly implemented and imported.
  * @postcondition If login is successful, user credentials are stored in `localStorage` and the page is reloaded.
- * If unsuccessful, an error message is displayed.
+ * If unsuccessful, an error message is displayed to the user.
  */
 export default function Login() {
-  // State for the username input field.
+  // State for user input fields (username and password).
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
 
-  // State for any error message that may be displayed upon login failure.
+  // State for storing error messages when login fails.
   const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <form onSubmit={(e) => handleLoginSubmit(e, userData, setErrorMessage)}>
+      {/* Form heading */}
       <h3>Log In</h3>
 
+      {/* Dynamically generates input fields for user data */}
       {Object.keys(userData).map((key) => (
         <InputField
           key={key}

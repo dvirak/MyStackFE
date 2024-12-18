@@ -1,10 +1,10 @@
 // ! ----------------- IMPORTED FILES --------------------------
 import logOut from "./LoginHelpers/logOut";
+import { getUserAPI } from "../../API/UsersAPI";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
 import { useEffect, useState } from "react";
-import { getUserAPI } from "../../API/UsersAPI";
 // ! -----------------------------------------------------------
 
 /**
@@ -28,14 +28,12 @@ export default function Account() {
       try {
         // Call the API to get the user information.
         const userInfo = await getUserAPI();
-        console.log("WORKED?");
-        console.log(userInfo);
         // Update the currentUser state with the retrieved user data.
         setCurrentUser(userInfo);
-        console.log(currentUser.id); // Log the user ID to confirm state update.
       } catch (error) {
         // Log any errors that occur during the API call.
         console.log(error);
+        setErrorMessage(error);
       }
     }
 
