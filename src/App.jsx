@@ -8,6 +8,7 @@ import AccountPage from "./Pages/AccountPage";
 
 // ! ----------------- IMPORTED MODULES --------------------------
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AppContextProvider from "./context/AppContextProvider";
 // ! -----------------------------------------------------------
 
 /**
@@ -21,7 +22,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
  */
 function App() {
   return (
-    <>
+    <AppContextProvider>
       <BrowserRouter>
         {/* Renders the header section of the page */}
         <Header />
@@ -37,7 +38,7 @@ function App() {
           {/* <Route path="/" element={<Homepage />} /> */}
         </Routes>
       </BrowserRouter>
-    </>
+    </AppContextProvider>
   );
 }
 

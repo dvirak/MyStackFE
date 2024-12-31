@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../../AppContext";
+import { AppContext } from "../context/AppContextProvider";
 
 export default function Errors() {
   const { errorMessage, isLoading } = useContext(AppContext);

@@ -2,7 +2,7 @@
 import Login from "../components/users/LogIn";
 import Account from "../components/users/Account";
 import Register from "../components/users/Register";
-import Errors from "../components/errors/Errors";
+import Errors from "../errors/Errors";
 // ! -----------------------------------------------------------
 
 /**
