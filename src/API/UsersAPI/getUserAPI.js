@@ -1,3 +1,7 @@
+// ! ----------------- IMPORTED FILES --------------------------
+import { baseURL } from "../dataAPI";
+// ! -----------------------------------------------------------
+
 /**
  * Description: Fetches details of the current user from the backend API using their user ID and authentication token.
  *
@@ -9,7 +13,6 @@
  * @postcondition Returns a JSON object with the user's details if the request succeeds.
  */
 
-const baseURL = "http://localhost:3000/api/";
 const currentUserToken = localStorage.getItem("current-user-key");
 const userID = localStorage.getItem("user-id");
 

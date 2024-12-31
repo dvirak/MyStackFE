@@ -1,3 +1,7 @@
+// ! ----------------- IMPORTED FILES --------------------------
+import { baseURL } from "../dataAPI";
+// ! -----------------------------------------------------------
+
 /**
  * Description: Fetches all books from the backend API at the `/books` endpoint.
  *
@@ -7,8 +11,6 @@
  * @precondition The backend server must be running and accessible at the specified `baseURL`.
  * @postcondition Returns a parsed array of books from the API if successful.
  */
-
-const baseURL = "http://localhost:3000/api/";
 
 export default async function getAllBooks() {
   try {
