@@ -1,3 +1,7 @@
+// ! ----------------- IMPORTED FILES --------------------------
+import { baseURL } from "../dataAPI";
+// ! -----------------------------------------------------------
+
 /**
  * Description: Sends a registration request to the backend API to create a new user account with the provided user details.
  *
@@ -11,8 +15,6 @@
  *               The `user` object must contain valid registration details as required by the API.
  * @postcondition A new user account is created in the backend, and the server's response is returned.
  */
-
-const baseURL = "http://localhost:3000/api/";
 
 export default async function registerAPI(user) {
   try {

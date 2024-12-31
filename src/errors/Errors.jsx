@@ -6,8 +6,13 @@ export default function Errors() {
 
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {errorMessage ? (
+        <p style={{ color: "red" }}>{errorMessage}</p>
+      ) : (
+        isLoading && <p>Loading...</p>
+      )}
+      {/* {isLoading ? <p>Loading...</p>}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
     </div>
   );
 }

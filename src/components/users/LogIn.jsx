@@ -1,10 +1,11 @@
 // ! ----------------- IMPORTED FILES --------------------------
-import handleLoginSubmit from "./LoginHelpers/handleLoginSubmit";
+import { AppContext } from "../../context/AppContextProvider";
+import loginSubmit from "./LoginHelpers/loginSubmit";
 import InputField from "./UserHelpers/InputField";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { useState } from "react";
+import { useContext, useState } from "react";
 // ! -----------------------------------------------------------
 
 /**
@@ -25,10 +26,13 @@ export default function Login() {
   });
 
   // State for storing error messages when login fails.
-  const [errorMessage, setErrorMessage] = useState("");
+  const { setErrorMessage, setIsLoading } = useContext(AppContext);
 
+  // const handleLoginSubmit = handleLoginSubmit();
   return (
-    <form onSubmit={(e) => handleLoginSubmit(e, userData, setErrorMessage)}>
+    <form
+      onSubmit={(e) => loginSubmit(e, userData, setIsLoading, setErrorMessage)}
+    >
       {/* Form heading */}
       <h3>Log In</h3>
 
@@ -46,9 +50,6 @@ export default function Login() {
       <button>
         <span className="login-button">Log In</span>
       </button>
-
-      {/* Displays an error message if login fails */}
-      <h4>{errorMessage}</h4>
     </form>
   );
 }

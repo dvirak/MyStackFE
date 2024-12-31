@@ -1,3 +1,7 @@
+// ! ----------------- IMPORTED FILES --------------------------
+import { baseURL } from "../dataAPI";
+// ! -----------------------------------------------------------
+
 /**
  * Description: Sends a login request to the backend API with the provided user credentials.
  *
@@ -11,10 +15,10 @@
  * @postcondition Returns the server's response, which may include a success message, user details, and/or a token.
  */
 
-const baseURL = "http://localhost:3000/api/";
-
 export default async function loginAPI(user) {
+  console.log("WE IN loginAPI");
   try {
+    console.log("WE IN TRY on loginAPI");
     // Send a POST request to the `/users/login` endpoint with user credentials in the body
     const response = await fetch(`${baseURL}/users/login`, {
       method: "POST",

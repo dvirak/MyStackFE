@@ -19,11 +19,7 @@ import { registerAPI } from "../../../API/UsersAPI";
  * Otherwise, an error message is displayed to the user.
  */
 
-export default async function handleRegisterSubmit(
-  e,
-  userData,
-  setErrorMessage
-) {
+export default async function registerSubmit(e, userData, setErrorMessage) {
   e.preventDefault();
 
   // Validate the user data. If validation fails, set the error message and exit.

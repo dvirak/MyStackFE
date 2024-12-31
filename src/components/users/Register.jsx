@@ -1,5 +1,5 @@
 // ! ----------------- IMPORTED FILES --------------------------
-import handleRegisterSubmit from "./RegisterHelpers/handleRegisterSubmit";
+import registerSubmit from "./RegisterHelpers/registerSubmit";
 import InputField from "./UserHelpers/InputField";
 // ! -----------------------------------------------------------
 
@@ -37,7 +37,7 @@ export default function Register() {
   const [errorMessage, setErrorMessage] = useState("");
 
   return (
-    <form onSubmit={(e) => handleRegisterSubmit(e, userData, setErrorMessage)}>
+    <form onSubmit={(e) => registerSubmit(e, userData, setErrorMessage)}>
       <h3>Register</h3>
 
       {/* Render input fields dynamically from userData, excluding password field */}
