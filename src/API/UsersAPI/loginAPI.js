@@ -16,9 +16,7 @@ import { baseURL } from "../dataAPI";
  */
 
 export default async function loginAPI(user) {
-  console.log("WE IN loginAPI");
   try {
-    console.log("WE IN TRY on loginAPI");
     // Send a POST request to the `/users/login` endpoint with user credentials in the body
     const response = await fetch(`${baseURL}/users/login`, {
       method: "POST",
