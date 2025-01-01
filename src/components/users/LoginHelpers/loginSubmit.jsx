@@ -22,14 +22,9 @@ export default async function loginSubmit(
 
   setIsLoading(true);
 
-  console.log("WE SUBMITTING");
-
   try {
-    console.log("WE IN TRY");
     // Calls the login API with the provided user credentials.
     const response = await loginAPI(userData);
-
-    console.log(response);
 
     if (response.token) {
       // Stores the token and user ID in local storage for session management.
@@ -42,14 +37,11 @@ export default async function loginSubmit(
       location.reload();
     } else {
       // Sets the error message state if login fails.
-      console.log("WE IN ELSE");
       setErrorMessage(response?.message);
     }
   } catch (error) {
-    console.log("WE IN CATCH");
     setErrorMessage(error);
   } finally {
-    console.log("WE IN FINALLY");
     setIsLoading(false);
   }
 }

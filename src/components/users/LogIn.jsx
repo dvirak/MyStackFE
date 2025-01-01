@@ -31,7 +31,7 @@ export default function Login() {
   // const handleLoginSubmit = handleLoginSubmit();
   return (
     <form
-      onSubmit={(e) => loginSubmit(e, userData, setIsLoading, setErrorMessage)}
+      onSubmit={(e) => loginSubmit(e, userData, setErrorMessage, setIsLoading)}
     >
       {/* Form heading */}
       <h3>Log In</h3>
