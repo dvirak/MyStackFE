@@ -19,8 +19,17 @@ import { registerAPI } from "../../../API/UsersAPI";
  * Otherwise, an error message is displayed to the user.
  */
 
-export default async function registerSubmit(e, userData, setErrorMessage) {
+export default async function registerSubmit(
+  e,
+  userData,
+  setErrorMessage,
+  setIsLoading
+) {
   e.preventDefault();
+
+  setErrorMessage("");
+
+  setIsLoading(true);
 
   // Validate the user data. If validation fails, set the error message and exit.
   const registerDataError = validateRegisterData(userData);
@@ -31,17 +40,24 @@ export default async function registerSubmit(e, userData, setErrorMessage) {
     // Prepare user data with the password from `password1`.
     const updatedUserData = { ...userData, password: userData.password1 };
 
-    // Attempt to register the user with the API.
-    const response = await registerAPI(updatedUserData);
+    try {
+      // Attempt to register the user with the API.
+      const response = await registerAPI(updatedUserData);
 
-    if (response.token) {
-      // If registration is successful, store the token and reload the page.
-      const token = response?.token;
-      localStorage.setItem("current-user-key", token);
-      location.reload();
-    } else {
-      // If registration fails, set the error message from the response.
-      setErrorMessage(response?.message);
+      if (response.token) {
+        // If registration is successful, store the token and reload the page.
+        const token = response?.token;
+        localStorage.setItem("current-user-key", token);
+        location.reload();
+      } else {
+        // If registration fails, set the error message from the response.
+        setErrorMessage(response?.message);
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 }

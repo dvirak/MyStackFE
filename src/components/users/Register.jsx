@@ -1,10 +1,11 @@
 // ! ----------------- IMPORTED FILES --------------------------
+import { AppContext } from "../../context/AppContextProvider";
 import registerSubmit from "./RegisterHelpers/registerSubmit";
 import InputField from "./UserHelpers/InputField";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { useState } from "react";
+import { useContext, useState } from "react";
 // ! -----------------------------------------------------------
 
 /**
@@ -34,10 +35,14 @@ export default function Register() {
   });
 
   // State for displaying any error messages during form submission
-  const [errorMessage, setErrorMessage] = useState("");
+  const { setErrorMessage, setIsLoading } = useContext(AppContext);
 
   return (
-    <form onSubmit={(e) => registerSubmit(e, userData, setErrorMessage)}>
+    <form
+      onSubmit={(e) =>
+        registerSubmit(e, userData, setErrorMessage, setIsLoading)
+      }
+    >
       <h3>Register</h3>
 
       {/* Render input fields dynamically from userData, excluding password field */}
@@ -56,9 +61,6 @@ export default function Register() {
       <button>
         <span className="login-button">Register</span>
       </button>
-
-      {/* Display error message if registration fails */}
-      <h4>{errorMessage}</h4>
     </form>
   );
 }
