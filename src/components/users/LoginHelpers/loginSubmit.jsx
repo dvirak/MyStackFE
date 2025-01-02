@@ -20,6 +20,8 @@ export default async function loginSubmit(
   // Prevents the default form submit action.
   e.preventDefault();
 
+  setErrorMessage("");
+
   setIsLoading(true);
 
   try {
