@@ -4,7 +4,8 @@ import { getUserAPI } from "../../API/UsersAPI";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/AppContextProvider";
 // ! -----------------------------------------------------------
 
 /**
@@ -17,30 +18,38 @@ import { useEffect, useState } from "react";
  * @postcondition Fetches the current user's information and displays it. Provides the ability to log out and displays any error messages if the logout fails.
  */
 export default function Account() {
-  // State to hold the current user's data.
-  const [currentUser, setCurrentUser] = useState("");
-  // State to hold any error messages.
-  const [errorMessage, setErrorMessage] = useState("");
+  // use context to load state
+  const { setErrorMessage, setIsLoading, userData, setUserData } =
+    useContext(AppContext);
 
   useEffect(() => {
+    // check if user exists in context, load it
+    // check if user_key exists in local storage, get user data, set user data
     // Function to fetch user data and update state.
     async function getUserInfo() {
-      try {
-        // Call the API to get the user information.
-        const userInfo = await getUserAPI();
-        // Update the currentUser state with the retrieved user data.
-        setCurrentUser(userInfo);
-      } catch (error) {
-        // Log any errors that occur during the API call.
-        console.log(error);
-        setErrorMessage(error);
+      setErrorMessage("");
+      setIsLoading(true);
+      if (!userData.username) {
+        try {
+          // Call the API to get the user information.
+          const userInfo = await getUserAPI();
+          // Update the currentUser state with the retrieved user data.
+          setUserData(userInfo);
+        } catch (error) {
+          // Log any errors that occur during the API call.
+          console.log(error);
+          setErrorMessage(error);
+        }
       }
+      setIsLoading(false);
     }
 
     // Call the function to fetch user data on component mount.
     getUserInfo();
   }, []); // Empty dependency array means this useEffect runs only once on mount.
 
+  console.log("USER DATA:");
+  console.log(userData);
   return (
     <>
       {/* Display a message indicating the user is logged in. */}
@@ -48,7 +57,6 @@ export default function Account() {
       {/* Button to trigger logout functionality. */}
       <button onClick={(e) => logOut(e, setErrorMessage)}>LOG OUT</button>
       {/* Display any error messages if present. */}
-      <h4>{errorMessage}</h4>
     </>
   );
 }
