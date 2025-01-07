@@ -21,21 +21,9 @@ import { useContext, useState } from "react";
  * If unsuccessful, an error message is displayed.
  */
 export default function Register() {
-  // State for holding user input data for all fields
-  const [userData, setUserData] = useState({
-    username: "",
-    password1: "",
-    password2: "",
-    password: "",
-    first_name: "",
-    last_name: "",
-    preferred_name: "",
-    phone: "",
-    email: "",
-  });
-
-  // State for displaying any error messages during form submission
-  const { setErrorMessage, setIsLoading } = useContext(AppContext);
+  // Loading context for user, error and loading data
+  const { setErrorMessage, setIsLoading, userData, setUserData } =
+    useContext(AppContext);
 
   return (
     <form
