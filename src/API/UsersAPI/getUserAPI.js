@@ -17,6 +17,7 @@ const currentUserToken = localStorage.getItem("current-user-key");
 const userID = localStorage.getItem("user-id");
 
 export default async function getUserAPI() {
+  console.log("getting user info...");
   try {
     // Send a GET request to the `/users/user/:userID` endpoint with authorization headers
     const response = await fetch(`${baseURL}/users/user/${userID}`, {

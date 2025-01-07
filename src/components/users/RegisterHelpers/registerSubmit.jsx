@@ -47,7 +47,10 @@ export default async function registerSubmit(
       if (response.token) {
         // If registration is successful, store the token and reload the page.
         const token = response?.token;
+        const userID = response?.user.id;
         localStorage.setItem("current-user-key", token);
+        localStorage.setItem("user-id", userID);
+
         location.reload();
       } else {
         // If registration fails, set the error message from the response.
