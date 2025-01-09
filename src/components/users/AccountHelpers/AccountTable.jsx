@@ -5,21 +5,32 @@ export default function AccountTable() {
   const { userData, setUserData } = useContext(AppContext);
   return (
     <table className="account-table">
-      <caption className="user-table-caption">User Information</caption>
+      {/* <caption className="user-table-caption"></caption> */}
       <thead>
-        <th>Username</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Preferred Name</th>
-        <th>Phone</th>
-        <th>Email</th>
+        <th colSpan={2}>User Information</th>
       </thead>
       <tr>
+        <td>Username</td>
         <td>{userData.username}</td>
+      </tr>
+      <tr>
+        <td>First Name</td>
         <td>{userData.first_name}</td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
         <td>{userData.last_name}</td>
+      </tr>
+      <tr>
+        <td>Preferred Name</td>
         <td>{userData.preferred_name}</td>
+      </tr>
+      <tr>
+        <td>Phone</td>
         <td>{userData.phone}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
         <td>{userData.email}</td>
       </tr>
     </table>
