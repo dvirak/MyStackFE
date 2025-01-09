@@ -6,6 +6,7 @@ import { getUserAPI } from "../../API/UsersAPI";
 // ! ---------------- IMPORTED MODULES -------------------------
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContextProvider";
+import AccountTable from "./AccountHelpers/AccountTable";
 // ! -----------------------------------------------------------
 
 /**
@@ -53,7 +54,7 @@ export default function Account() {
   return (
     <>
       {/* Display a message indicating the user is logged in. */}
-      <span>YOU LOGGED IN!</span>
+      <AccountTable />
       {/* Button to trigger logout functionality. */}
       <button onClick={(e) => logOut(e, setErrorMessage)}>LOG OUT</button>
       {/* Display any error messages if present. */}
