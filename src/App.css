@@ -44,3 +44,16 @@
 .books-table-cover-image {
   width: 100px;
 }
+
+/*---------------------- Account ----------------------*/
+/* .account-table {
+  transform: rotate(90deg);
+  transform-origin: top left;
+  display: inline-block;
+}
+
+.account-table td,
+.account-table th {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+} */
