@@ -15,8 +15,7 @@ import BookRow from "./BookRow";
 export default function BooksTable({ bookList }) {
   return (
     <>
-      <table>
-        <caption className="books-table-caption">Heres The Books!</caption>
+      <table className="books-table">
         <thead>
           <tr>
             <th>Cover Image</th>
