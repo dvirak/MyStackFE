@@ -10,8 +10,8 @@
 
 export default function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <h1>My Stack</h1>
-    </div>
+    </header>
   );
 }

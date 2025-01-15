@@ -9,6 +9,7 @@ import AccountPage from "./Pages/AccountPage";
 // ! ----------------- IMPORTED MODULES --------------------------
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppContextProvider from "./context/AppContextProvider";
+import MainLayout from "./Pages/PageLayout";
 // ! -----------------------------------------------------------
 
 /**
@@ -24,18 +25,14 @@ function App() {
   return (
     <AppContextProvider>
       <BrowserRouter>
-        {/* Renders the header section of the page */}
-        <Header />
-
-        {/* Renders the navigation bar */}
-        <Navigation />
-
         {/* Defines the routes for different pages */}
         <Routes>
-          <Route path="/books" element={<Books />} />
-          <Route path="/account" element={<AccountPage />} />
-          {/* Uncomment the following line to enable the Homepage route */}
-          {/* <Route path="/" element={<Homepage />} /> */}
+          <Route path="/" element={<MainLayout />}>
+            <Route path="/books" element={<Books />} />
+            <Route path="/account" element={<AccountPage />} />
+            {/* Uncomment the following line to enable the Homepage route */}
+            {/* <Route path="/" element={<Homepage />} /> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </AppContextProvider>

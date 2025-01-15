@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem 2rem 0rem 2rem;
   text-align: center;
 }
 
@@ -114,6 +114,21 @@ button:focus-visible {
   width: 100px;
 }
 
+/*---------------------- Page Layout ----------------------*/
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/*---------------------- Main Content Section ----------------------*/
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f4f4f4;
+}
+
 /*---------------------- Account ----------------------*/
 .account-table {
   border-collapse: collapse;
@@ -133,6 +148,14 @@ thead th {
 
 tr > td:first-child {
   font-weight: bold;
+}
+
+/*---------------------- Header ----------------------*/
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
 /*---------------------- Navigation ----------------------*/
@@ -193,4 +216,12 @@ nav span.error-message {
   nav button {
     margin: 5px 0;
   }
+}
+
+/*---------------------- Footer ----------------------*/
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }
