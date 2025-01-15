@@ -61,6 +61,20 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  background-color: #333;
+  color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -124,7 +138,7 @@ button:focus-visible {
 /*---------------------- Main Content Section ----------------------*/
 main {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
   overflow-y: auto;
   background-color: #f4f4f4;
 }
@@ -133,10 +147,6 @@ main {
 .account-table {
   border-collapse: collapse;
   width: 100%;
-}
-
-thead th {
-  background-color: #f4f4f4;
 }
 
 .account-table td,
@@ -224,4 +234,19 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
+}
+
+/*---------------------- Book Section ----------------------*/
+.books-table {
+  text-align: center;
+  position: relative;
+}
+
+.books-table th {
+  position: sticky;
+  top: 0;
+}
+
+.books-table td {
+  max-height: 160;
 }
