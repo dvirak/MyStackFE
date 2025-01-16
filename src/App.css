@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0rem 2rem 0rem 2rem;
   text-align: center;
@@ -124,10 +124,6 @@ tr:nth-child(even) {
   color: #888;
 }
 
-.books-table-cover-image {
-  width: 100px;
-}
-
 /*---------------------- Page Layout ----------------------*/
 .app-container {
   display: flex;
@@ -144,6 +140,7 @@ main {
 }
 
 /*---------------------- Account ----------------------*/
+/* todo do you need this?*/
 .account-table {
   border-collapse: collapse;
   width: 100%;
@@ -240,6 +237,7 @@ footer {
 .books-table {
   text-align: center;
   position: relative;
+  margin: 20px 0;
 }
 
 .books-table th {
@@ -247,6 +245,36 @@ footer {
   top: 0;
 }
 
-.books-table td {
+/* .books-table td {
   max-height: 160;
+} */
+
+.books-table th,
+.books-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  /* text-align: left;
+  vertical-align: top; */
+}
+
+.books-table-cover-image {
+  max-height: 165px; /* Ensure consistent row height based on the image */
+  width: auto;
+  object-fit: cover;
+}
+
+/* Expandable Row */
+.expandable-content {
+  max-height: 150px; /* Restrict row height */
+  overflow: hidden;
+  transition: max-height 0.3s ease, background-color 0.2s ease;
+}
+
+.expandable-content.expanded {
+  max-height: none; /* Remove height restriction when expanded */
+}
+
+/* Add hover effect */
+.book-row:hover {
+  background-color: #ddd7d7; /* Optional: Highlight on hover */
 }
