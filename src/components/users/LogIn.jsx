@@ -31,11 +31,12 @@ export default function Login() {
   // const handleLoginSubmit = handleLoginSubmit();
   return (
     <form
+      className="login-form"
       onSubmit={(e) => loginSubmit(e, userData, setErrorMessage, setIsLoading)}
     >
       {/* Form heading */}
       <h3>Log In</h3>
-
+      {/* <div className="login-form-div"> */}
       {/* Dynamically generates input fields for user data */}
       {Object.keys(userData).map((key) => (
         <InputField
@@ -45,10 +46,10 @@ export default function Login() {
           setUserData={setUserData}
         />
       ))}
-
+      {/* </div> */}
       {/* Submit button */}
-      <button>
-        <span className="login-button">Log In</span>
+      <button className="login-button">
+        <span>Log In</span>
       </button>
     </form>
   );
