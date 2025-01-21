@@ -278,3 +278,63 @@ footer {
 .book-row:hover {
   background-color: #ddd7d7; /* Optional: Highlight on hover */
 }
+
+/*---------------------- Login Section ----------------------*/
+/* Main container for the login form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  /* height: 100vh; Full viewport height */
+  max-width: 400px; /* Prevents the form from becoming too wide */
+  margin: 0 auto; /* Centers the form horizontally on the page */
+  background-color: #ffffff; /* Optional: background color for the form */
+  padding: 20px; /* Adds padding around the form */
+  border-radius: 8px; /* Adds rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  gap: 20px; /* Equal spacing between elements */
+}
+
+/* Heading styles */
+.login-form h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333333; /* Neutral text color */
+}
+
+/* Input field container (applies styles to InputField children) */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Ensures padding doesn't affect total width */
+}
+
+/* Button styles */
+.login-button {
+  width: 100%; /* Makes the button as wide as the input fields */
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff; /* White text */
+  background-color: #007bff; /* Primary blue color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+}
+
+/* Input focus styling for better UX */
+.login-form input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none; /* Removes default outline */
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
+}
