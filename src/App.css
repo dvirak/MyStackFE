@@ -344,36 +344,37 @@ footer {
 .register-form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the form content horizontally */
-  justify-content: center; /* Centers the form content vertically */
+  align-items: center;
+  justify-content: center;
   height: 100vh; /* Full viewport height */
-  max-width: 600px; /* Adjust width for the grid layout */
-  margin: 0 auto; /* Centers the form horizontally on the page */
-  background-color: #ffffff; /* Optional: background color for the form */
-  padding: 20px; /* Adds padding around the form */
-  border-radius: 8px; /* Adds rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px; /* Max width for the form */
+  margin: 0 auto; /* Centers the form horizontally */
+  background-color: #f9f9f9; /* Light background color for contrast */
+  padding: 20px; /* Padding inside the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   gap: 20px; /* Spacing between the heading, grid, and button */
 }
 
-/* Heading styles */
+/* Form heading */
 .register-form h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333333; /* Neutral text color */
+  color: #333; /* Neutral text color */
+  text-align: center;
 }
 
-/* Input fields grid container */
-.register-form .input-grid {
+/* Grid container for input fields */
+.register-input-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   grid-gap: 20px; /* Spacing between grid items */
-  width: 100%; /* Makes the grid take the full width of the form */
+  width: 100%; /* Grid takes the full width of the form */
 }
 
-/* Input field styles (targets input fields inside grid) */
-.register-form input {
+/* Input field styles */
+.register-input-grid input {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -382,13 +383,15 @@ footer {
   box-sizing: border-box; /* Ensures padding doesn't affect total width */
 }
 
-/* Button styles */
-.register-form button {
-  width: 100%; /* Makes the button as wide as the form */
-  padding: 10px;
-  font-size: 1rem;
+/* Submit button */
+.login-button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff; /* White text */
+  text-align: center;
+  color: #fff; /* White text */
   background-color: #007bff; /* Primary blue color */
   border: none;
   border-radius: 5px; /* Rounded corners */
@@ -396,13 +399,20 @@ footer {
   transition: background-color 0.2s ease;
 }
 
-.register-form button:hover {
+.login-button:hover {
   background-color: #0056b3; /* Darker blue for hover effect */
 }
 
-/* Input focus styling for better UX */
-.register-form input:focus {
+/* Input focus effect */
+.register-input-grid input:focus {
   border-color: #007bff; /* Blue border on focus */
-  outline: none; /* Removes default outline */
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .register-input-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
 }
