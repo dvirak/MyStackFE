@@ -10,11 +10,12 @@ export default function Errors() {
 
   useEffect(() => {
     console.log("errorMessage updated: " + errorMessage);
+    console.log(errorMessage);
   }, [errorMessage]);
 
   return (
     <div>
-      {errorMessage ? (
+      {typeof errorMessage === "string" && errorMessage.trim() !== "" ? (
         <p style={{ color: "red" }}>{errorMessage}</p>
       ) : (
         isLoading && <p>Loading...</p>

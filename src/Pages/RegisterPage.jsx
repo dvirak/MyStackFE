@@ -1,6 +1,4 @@
 // ! ----------------- IMPORTED FILES --------------------------
-import Login from "../components/users/LogIn";
-import Account from "../components/users/Account";
 import Register from "../components/users/Register";
 import Errors from "../errors/Errors";
 // ! -----------------------------------------------------------
@@ -17,11 +15,10 @@ import Errors from "../errors/Errors";
  * @postcondition The account page either shows the `Account` component for logged-in users
  * or the `Login` and `Register` components for users who are not logged in.
  */
-export default function AccountPage() {
+export default function RegisterPage() {
   return (
     <div className="account-div">
-      <Account />
-
+      <Register />
       <Errors />
     </div>
   );

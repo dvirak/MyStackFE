@@ -1,4 +1,5 @@
 // ! ----------------- IMPORTED FILES --------------------------
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContextProvider";
 import loginSubmit from "./LoginHelpers/loginSubmit";
 import InputField from "./UserHelpers/InputField";
@@ -20,30 +21,45 @@ import { useContext, useState } from "react";
  */
 export default function Login() {
   // State for user input fields (username and password).
-  const [userData, setUserData] = useState({
+  const [loginUserData, setLoginUserData] = useState({
     username: "",
     password: "",
   });
 
   // State for storing error messages when login fails.
-  const { setErrorMessage, setIsLoading } = useContext(AppContext);
+  const { userData, setUserData, setErrorMessage, setIsLoading } =
+    useContext(AppContext);
 
-  // const handleLoginSubmit = handleLoginSubmit();
+  const navigate = useNavigate();
+
+  console.log("WE ON LOGIN PAGE");
+  console.log("CURRENT USER DATA???");
+  console.log(userData);
+
   return (
     <form
       className="login-form"
-      onSubmit={(e) => loginSubmit(e, userData, setErrorMessage, setIsLoading)}
+      onSubmit={(e) =>
+        loginSubmit(
+          e,
+          loginUserData,
+          setUserData,
+          setErrorMessage,
+          setIsLoading,
+          navigate
+        )
+      }
     >
       {/* Form heading */}
       <h3>Log In</h3>
       {/* <div className="login-form-div"> */}
       {/* Dynamically generates input fields for user data */}
-      {Object.keys(userData).map((key) => (
+      {Object.keys(loginUserData).map((key) => (
         <InputField
           key={key}
           fieldName={key}
-          userData={userData}
-          setUserData={setUserData}
+          userData={loginUserData}
+          setUserData={setLoginUserData}
         />
       ))}
       {/* </div> */}
@@ -51,6 +67,9 @@ export default function Login() {
       <button className="login-button">
         <span>Log In</span>
       </button>
+      <Link to={"/register"}>
+        <span>No account yet? Register here!</span>
+      </Link>
     </form>
   );
 }

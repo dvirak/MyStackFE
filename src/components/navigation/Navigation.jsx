@@ -3,8 +3,9 @@ import logOut from "../users/LoginHelpers/logOut";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AppContext } from "../../context/AppContextProvider";
 // ! -----------------------------------------------------------
 
 /**
@@ -22,8 +23,10 @@ export default function Navigation() {
   // Retrieve the current user key from local storage
   const userKey = localStorage.getItem("current-user-key");
 
+  const navigate = useNavigate();
+
   // State for error messages during logout
-  const [errorMessage, setErrorMessage] = useState("");
+  const { setErrorMessage, setUserData } = useContext(AppContext);
 
   return (
     <nav>
@@ -39,14 +42,21 @@ export default function Navigation() {
         <>
           {/* If the user is logged in, show Account link and Logout button */}
           <Link to="/account">Account</Link>
-          <button onClick={(e) => logOut(e, setErrorMessage)}>Log Out</button>
+          <button
+            onClick={(e) => logOut(e, setErrorMessage, setUserData, navigate)}
+          >
+            Log Out
+          </button>
 
-          {/* Display an error message if logout fails */}
-          {errorMessage && <span>Error: {errorMessage}</span>}
+          {/* Display an error message if logout fails
+          {errorMessage && <span>Error: {errorMessage}</span>} */}
         </>
       ) : (
         // If the user is not logged in, show Log In/Register link
-        <Link to="/account">Log In/Register</Link>
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
       )}
     </nav>
   );
