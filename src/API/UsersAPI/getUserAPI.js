@@ -13,11 +13,12 @@ import { baseURL } from "../dataAPI";
  * @postcondition Returns a JSON object with the user's details if the request succeeds.
  */
 
-const currentUserToken = localStorage.getItem("current-user-key");
-const userID = localStorage.getItem("user-id");
-
 export default async function getUserAPI() {
   console.log("getting user info...");
+
+  const currentUserToken = localStorage.getItem("current-user-key");
+  const userID = localStorage.getItem("user-id");
+
   try {
     // Send a GET request to the `/users/user/:userID` endpoint with authorization headers
     const response = await fetch(`${baseURL}/users/user/${userID}`, {
@@ -25,6 +26,7 @@ export default async function getUserAPI() {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUserToken}`,
+        "Cache-Control": "no-cache",
       },
     });
 

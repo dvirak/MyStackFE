@@ -4,9 +4,10 @@ import { getUserAPI } from "../../API/UsersAPI";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../context/AppContextProvider";
 import AccountTable from "./AccountHelpers/AccountTable";
+import { useNavigate } from "react-router-dom";
 // ! -----------------------------------------------------------
 
 /**
@@ -20,43 +21,55 @@ import AccountTable from "./AccountHelpers/AccountTable";
  */
 export default function Account() {
   // use context to load state
-  const { setErrorMessage, setIsLoading, userData, setUserData } =
+  const { setErrorMessage, isLoading, setIsLoading, userData, setUserData } =
     useContext(AppContext);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // check if user exists in context, load it
-    // check if user_key exists in local storage, get user data, set user data
-    // Function to fetch user data and update state.
-    async function getUserInfo() {
+    let isMounted = true;
+    const fetchData = async () => {
       setErrorMessage("");
       setIsLoading(true);
-      if (!userData.username) {
-        try {
-          // Call the API to get the user information.
-          const userInfo = await getUserAPI();
-          // Update the currentUser state with the retrieved user data.
-          setUserData(userInfo);
-        } catch (error) {
-          // Log any errors that occur during the API call.
-          console.log(error);
-          setErrorMessage(error);
+
+      try {
+        const storedToken = localStorage.getItem("current-user-key");
+        if (!storedToken) {
+          setErrorMessage("No token found. Redirecting to login.");
+          navigate("/login");
+          return;
         }
+
+        // Fetch user data if not already set
+        if (!userData?.username && isMounted) {
+          const userInfo = await getUserAPI();
+          if (isMounted) {
+            setUserData(userInfo);
+            // window.reload();
+          }
+        }
+      } catch (error) {
+        console.error(error);
+        if (isMounted) setErrorMessage("Failed to fetch user information.");
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
-      setIsLoading(false);
-    }
+    };
 
-    // Call the function to fetch user data on component mount.
-    getUserInfo();
-  }, []); // Empty dependency array means this useEffect runs only once on mount.
-
-  console.log("USER DATA:");
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, [navigate, setErrorMessage, setIsLoading, setUserData, userData]);
   console.log(userData);
   return (
     <>
-      {/* Display a message indicating the user is logged in. */}
-      <AccountTable />
-      {/* Button to trigger logout functionality. */}
-      <button onClick={(e) => logOut(e, setErrorMessage)}>LOG OUT</button>
+      {isLoading ? <p>Loading user information...</p> : <AccountTable />}
+      <button
+        onClick={(e) => logOut(e, setErrorMessage, setUserData, navigate)}
+      >
+        LOG OUT
+      </button>
       {/* Display any error messages if present. */}
     </>
   );

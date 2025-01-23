@@ -11,16 +11,28 @@
  * If not logged in, sets an error message.
  */
 
-export default function logOut(e, setErrorMessage) {
+import { useContext } from "react";
+import {
+  AppContext,
+  initialUserState,
+} from "../../../context/AppContextProvider";
+// const { userData } = useContext(AppContext);
+export default function logOut(e, setErrorMessage, setUserData, navigate) {
   e.preventDefault();
-
-  // Check if the current-user-key exists in local storage
-  if (localStorage.getItem("current-user-key")) {
-    // Clear the key and reload the page
-    localStorage.setItem("current-user-key", "");
-    location.reload();
-  } else {
-    // Set an error message if no user is logged in
-    setErrorMessage("You are not logged in");
+  console.log("WE CLICKED LOG OUT!!!!");
+  try {
+    const currentPath = window.location.pathname;
+    console.log("current path: " + currentPath);
+    localStorage.removeItem("current-user-key");
+    setUserData(initialUserState);
+    setErrorMessage("");
+    if (currentPath === "/account") {
+      navigate("/login");
+    } else {
+      window.location.reload();
+    }
+  } catch (error) {
+    console.error("Error during logout: " + error);
+    setErrorMessage(error.message || "Failed to log out. Please try again");
   }
 }

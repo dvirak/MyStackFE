@@ -10,6 +10,8 @@ import AccountPage from "./Pages/AccountPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppContextProvider from "./context/AppContextProvider";
 import MainLayout from "./Pages/PageLayout";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
 // ! -----------------------------------------------------------
 
 /**
@@ -28,6 +30,8 @@ function App() {
         {/* Defines the routes for different pages */}
         <Routes>
           <Route path="/" element={<MainLayout />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
             <Route path="/books" element={<Books />} />
             <Route path="/account" element={<AccountPage />} />
             {/* Uncomment the following line to enable the Homepage route */}

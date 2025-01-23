@@ -1,5 +1,5 @@
 // ! ----------------- IMPORTED FILES --------------------------
-import { loginAPI } from "../../../API/UsersAPI";
+import { getUserAPI, loginAPI } from "../../../API/UsersAPI";
 // ! -----------------------------------------------------------
 /**
  * Description: Handles form submission by calling the `loginAPI` function.
@@ -13,10 +13,13 @@ import { loginAPI } from "../../../API/UsersAPI";
  */
 export default async function loginSubmit(
   e,
-  userData,
+  loginUserData,
+  setUserData,
   setErrorMessage,
-  setIsLoading
+  setIsLoading,
+  navigate
 ) {
+  console.log("LOG IN SUBMIT!!!");
   // Prevents the default form submit action.
   e.preventDefault();
 
@@ -26,7 +29,7 @@ export default async function loginSubmit(
 
   try {
     // Calls the login API with the provided user credentials.
-    const response = await loginAPI(userData);
+    const response = await loginAPI(loginUserData);
 
     if (response.token) {
       // Stores the token and user ID in local storage for session management.
@@ -35,8 +38,16 @@ export default async function loginSubmit(
       localStorage.setItem("current-user-key", token);
       localStorage.setItem("user-id", userID);
 
+      const userInfo = await getUserAPI();
+      console.log("WE GOT USER DATA!!!");
+      console.log("USER DATA!!!!::: ");
+      console.log(userInfo);
+      setUserData(userInfo);
+      console.log("WE UPDATED STATE");
+      console.log("NEW USER DATA!!!");
+
       // Reloads the page to reflect the logged-in state.
-      location.reload();
+      navigate("/account");
     } else {
       // Sets the error message state if login fails.
       setErrorMessage(response?.message);
