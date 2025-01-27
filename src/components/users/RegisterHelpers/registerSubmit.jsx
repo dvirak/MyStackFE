@@ -23,8 +23,11 @@ export default async function registerSubmit(
   e,
   userData,
   setErrorMessage,
-  setIsLoading
+  setIsLoading,
+  navigate
 ) {
+  console.log("REGISTER SUBMIT!!!");
+
   e.preventDefault();
 
   setErrorMessage("");
@@ -51,7 +54,7 @@ export default async function registerSubmit(
         localStorage.setItem("current-user-key", token);
         localStorage.setItem("user-id", userID);
 
-        location.reload();
+        navigate("/account");
       } else {
         // If registration fails, set the error message from the response.
         setErrorMessage(response?.message);

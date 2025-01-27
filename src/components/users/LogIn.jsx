@@ -32,10 +32,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  console.log("WE ON LOGIN PAGE");
-  console.log("CURRENT USER DATA???");
-  console.log(userData);
-
   return (
     <form
       className="login-form"

@@ -39,12 +39,8 @@ export default async function loginSubmit(
       localStorage.setItem("user-id", userID);
 
       const userInfo = await getUserAPI();
-      console.log("WE GOT USER DATA!!!");
-      console.log("USER DATA!!!!::: ");
-      console.log(userInfo);
+
       setUserData(userInfo);
-      console.log("WE UPDATED STATE");
-      console.log("NEW USER DATA!!!");
 
       // Reloads the page to reflect the logged-in state.
       navigate("/account");
