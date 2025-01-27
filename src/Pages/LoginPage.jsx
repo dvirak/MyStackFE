@@ -4,16 +4,14 @@ import Errors from "../errors/Errors";
 // ! -----------------------------------------------------------
 
 /**
- * Description: A React component that handles the account page display.
- * If a user is logged in (determined by the presence of a valid `current-user-key` in localStorage),
- * it renders the `Account` component. Otherwise, it renders both the `Login` and `Register` components.
+ * Description: A React component that displays the login page.
+ * It renders the `Login` component for user authentication and the `Errors` component for displaying error messages.
  *
- * @returns {JSX.Element} The rendered account page with conditional components.
+ * @returns {JSX.Element} The rendered login page with the `Login` component and any errors displayed.
  *
- * @precondition `localStorage` should contain a `current-user-key` to indicate if a user is logged in.
- * `Login`, `Register`, and `Account` components must be correctly implemented and imported.
- * @postcondition The account page either shows the `Account` component for logged-in users
- * or the `Login` and `Register` components for users who are not logged in.
+ * @precondition The `Login` and `Errors` components must be correctly implemented and imported.
+ *
+ * @postcondition Displays the `Login` component for user authentication and renders any errors if present.
  */
 export default function LoginPage() {
   return (
