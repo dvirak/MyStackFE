@@ -1,4 +1,5 @@
 // ! ----------------- IMPORTED FILES --------------------------
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContextProvider";
 import registerSubmit from "./RegisterHelpers/registerSubmit";
 import InputField from "./UserHelpers/InputField";
@@ -25,11 +26,13 @@ export default function Register() {
   const { setErrorMessage, setIsLoading, userData, setUserData } =
     useContext(AppContext);
 
+  const navigate = useNavigate();
+
   return (
     <form
       className="register-form"
       onSubmit={(e) =>
-        registerSubmit(e, userData, setErrorMessage, setIsLoading)
+        registerSubmit(e, userData, setErrorMessage, setIsLoading, navigate)
       }
     >
       <h3>Register</h3>
@@ -52,6 +55,9 @@ export default function Register() {
       <button className="login-button">
         <span>Register</span>
       </button>
+      <Link to={"/login"}>
+        <span>Already have an account? Login here!</span>
+      </Link>
     </form>
   );
 }

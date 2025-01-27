@@ -346,7 +346,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full viewport height */
+  /* height: 100vh; Full viewport height */
   max-width: 600px; /* Max width for the form */
   margin: 0 auto; /* Centers the form horizontally */
   background-color: #f9f9f9; /* Light background color for contrast */
