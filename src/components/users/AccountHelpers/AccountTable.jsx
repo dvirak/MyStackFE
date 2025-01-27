@@ -1,32 +1,34 @@
-import { useContext, useEffect } from "react";
+// ! ----------------- IMPORTED FILES --------------------------
 import { AppContext } from "../../../context/AppContextProvider";
-import { useNavigate } from "react-router-dom";
+// ! -----------------------------------------------------------
+
+// ! ---------------- IMPORTED MODULES -------------------------
+import { useContext } from "react";
+// ! -----------------------------------------------------------
+
+/**
+ * Description: A table component that displays user account information
+ * retrieved from the application context.
+ *
+ * @returns {JSX.Element} A JSX element representing a table with user account information.
+ *
+ * @precondition The `AppContext` must provide `userData` with properties
+ * like `username`, `first_name`, `last_name`, etc.
+ * @postcondition Renders a table with user information displayed in rows.
+ */
 
 export default function AccountTable() {
+  // Retrieve the `userData` object from the application context
   const { userData } = useContext(AppContext);
-
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log("IN AccountTable useEffect...");
-  //   if (!userData && !isLoading) {
-  //     console.log("NO USERDATA AND NOT LOADING???");
-  //     setErrorMessage("No user data available");
-  //     navigate("/account");
-  //   }
-  // }, [userData, setErrorMessage, isLoading, navigate]);
-
-  // Return null if userData is not yet available (to avoid rendering the table)
-  if (!userData) {
-    return <p>FUCKIGN LOADIUNG BITCH WAIT</p>; // Or display a fallback UI like a spinner
-  }
 
   return (
     <table className="account-table">
-      {/* <caption className="user-table-caption"></caption> */}
+      {/* Table header displaying the section title */}
       <thead>
         <th colSpan={2}>User Information</th>
       </thead>
+
+      {/* Table rows displaying user data properties */}
       <tr>
         <td>Username</td>
         <td>{userData.username}</td>

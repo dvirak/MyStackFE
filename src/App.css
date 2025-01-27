@@ -1,5 +1,5 @@
 #root {
-  max-width: 1400px;
+  width: 90vw;
   margin: 0 auto;
   padding: 0rem 2rem 0rem 2rem;
   text-align: center;
@@ -133,6 +133,10 @@ tr:nth-child(even) {
 
 /*---------------------- Main Content Section ----------------------*/
 main {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
   flex: 1;
   /* padding: 20px; */
   overflow-y: auto;
@@ -141,9 +145,25 @@ main {
 
 /*---------------------- Account ----------------------*/
 /* todo do you need this?*/
+.account-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-div button {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .account-table {
   border-collapse: collapse;
-  width: 100%;
+  cursor: pointer;
 }
 
 .account-table td,
@@ -155,6 +175,11 @@ main {
 
 tr > td:first-child {
   font-weight: bold;
+}
+
+/* Add hover effect */
+.account-table tr:hover {
+  background-color: #ddd7d7; /* Optional: Highlight on hover */
 }
 
 /*---------------------- Header ----------------------*/
