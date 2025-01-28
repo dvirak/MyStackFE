@@ -51,11 +51,14 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease;
 }
+
 button:hover {
   border-color: #646cff;
+  filter: brightness(90%);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -133,10 +136,10 @@ tr:nth-child(even) {
 
 /*---------------------- Main Content Section ----------------------*/
 main {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+  justify-content: flex-start;
+  align-items: center;
   flex: 1;
   /* padding: 20px; */
   overflow-y: auto;
@@ -150,17 +153,38 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 1000px;
 }
 
-.account-div button {
+.account-button-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  width: 1000px;
+  padding: 20px;
+}
+
+.edit-account-button {
+  background-color: green;
+}
+
+.log-out-button {
+  background-color: #007bff;
+}
+
+.delete-account-button {
+  background-color: red;
+}
+
+.account-button-div button {
   padding: 5px 10px;
   font-size: 16px;
-  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
+
 .account-table {
   border-collapse: collapse;
   cursor: pointer;
@@ -353,10 +377,6 @@ footer {
   transition: background-color 0.2s ease;
 }
 
-.login-button:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
-}
-
 /* Input focus styling for better UX */
 .login-form input:focus {
   border-color: #007bff; /* Blue border on focus */
@@ -422,10 +442,6 @@ footer {
   border-radius: 5px; /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
-
-.login-button:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
 }
 
 /* Input focus effect */
