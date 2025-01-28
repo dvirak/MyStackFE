@@ -31,11 +31,16 @@ export default function Account() {
       {isLoading ? <p>Loading user information...</p> : <AccountTable />}
 
       {/* Logout button to clear user session and redirect */}
-      <button
-        onClick={(e) => logOut(e, setErrorMessage, setUserData, navigate)}
-      >
-        LOG OUT
-      </button>
+      <div className="account-button-div">
+        <button className="edit-account-button">EDIT ACCOUNT</button>
+        <button
+          className="log-out-button"
+          onClick={(e) => logOut(e, setErrorMessage, setUserData, navigate)}
+        >
+          LOG OUT
+        </button>
+        <button className="delete-account-button">DELETE ACCOUNT</button>
+      </div>
     </>
   );
 }
