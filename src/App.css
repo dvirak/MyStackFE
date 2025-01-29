@@ -172,9 +172,18 @@ main {
   background-color: #007bff;
 }
 
-.delete-account-button {
+.delete-account-button,
+.cancel-account-changes-button {
   background-color: red;
 }
+
+.save-account-changes-button {
+  background-color: green;
+}
+
+/* .cancel-account-changes-button {
+  background-color: yellow;
+} */
 
 .account-button-div button {
   padding: 5px 10px;

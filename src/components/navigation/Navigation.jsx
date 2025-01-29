@@ -26,7 +26,8 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   // State for error messages during logout
-  const { setErrorMessage, setUserData } = useContext(AppContext);
+  const { setErrorMessage, setUserData, setIsEditable } =
+    useContext(AppContext);
 
   return (
     <nav>
@@ -43,7 +44,9 @@ export default function Navigation() {
           {/* If the user is logged in, show Account link and Logout button */}
           <Link to="/account">Account</Link>
           <button
-            onClick={(e) => logOut(e, setErrorMessage, setUserData, navigate)}
+            onClick={(e) =>
+              logOut(e, setErrorMessage, setUserData, setIsEditable, navigate)
+            }
           >
             Log Out
           </button>

@@ -18,7 +18,13 @@ import { initialUserState } from "../../../context/AppContextProvider";
  * or navigates to the login page if the user was logged in. If an error occurs, sets an error message.
  */
 
-export default function logOut(e, setErrorMessage, setUserData, navigate) {
+export default function logOut(
+  e,
+  setErrorMessage,
+  setUserData,
+  setIsEditable,
+  navigate
+) {
   // Prevents the default action triggered by the button click.
   e.preventDefault();
 
@@ -36,6 +42,9 @@ export default function logOut(e, setErrorMessage, setUserData, navigate) {
 
     // Clears any existing error message.
     setErrorMessage("");
+
+    // Resets editable state
+    setIsEditable(false);
 
     // Navigates to the login page if the user is on the account page.
     if (currentPath === "/account") {
