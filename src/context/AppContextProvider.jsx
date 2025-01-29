@@ -20,6 +20,8 @@ export default function AppContextProvider({ children }) {
 
   const [userData, setUserData] = useState(initialUserState);
 
+  const [isEditable, setIsEditable] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -29,6 +31,8 @@ export default function AppContextProvider({ children }) {
         setIsLoading,
         userData,
         setUserData,
+        isEditable,
+        setIsEditable,
       }}
     >
       {children}
