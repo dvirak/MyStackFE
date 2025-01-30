@@ -156,8 +156,9 @@ main {
   align-items: center;
   width: 1000px;
   background-color: #ddd7d7; /* Optional: Highlight on hover */
-
+  box-shadow: 5px 5px 5px #333;
   border-radius: 30px;
+  margin-top: 20px;
 }
 
 .account-button-div {
