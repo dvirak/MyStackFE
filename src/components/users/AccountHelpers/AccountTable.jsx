@@ -1,5 +1,6 @@
 // ! ----------------- IMPORTED FILES --------------------------
 import { AppContext } from "../../../context/AppContextProvider";
+import AccountRow from "./AccountRow";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
@@ -19,7 +20,7 @@ import { useContext } from "react";
 
 export default function AccountTable() {
   // Retrieve the `userData` object from the application context
-  const { userData } = useContext(AppContext);
+  const { userData, isEditable } = useContext(AppContext);
 
   return (
     <table className="account-table">
@@ -29,30 +30,16 @@ export default function AccountTable() {
       </thead>
 
       {/* Table rows displaying user data properties */}
-      <tr>
-        <td>Username</td>
-        <td>{userData.username}</td>
-      </tr>
-      <tr>
-        <td>First Name</td>
-        <td>{userData.first_name}</td>
-      </tr>
-      <tr>
-        <td>Last Name</td>
-        <td>{userData.last_name}</td>
-      </tr>
-      <tr>
-        <td>Preferred Name</td>
-        <td>{userData.preferred_name}</td>
-      </tr>
-      <tr>
-        <td>Phone</td>
-        <td>{userData.phone}</td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td>{userData.email}</td>
-      </tr>
+      <tbody>
+        {Object.entries(userData).map(([key, value]) => (
+          <AccountRow
+            key={key}
+            field={key}
+            value={value}
+            isEditable={isEditable}
+          />
+        ))}
+      </tbody>
     </table>
   );
 }
