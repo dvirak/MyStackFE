@@ -23,8 +23,13 @@ import { AppContext } from "../../../context/AppContextProvider";
  */
 export default function AccountButtonDiv() {
   // Access global state functions from context
-  const { setErrorMessage, setUserData, setIsEditable } =
-    useContext(AppContext);
+  const {
+    setErrorMessage,
+    userData,
+    setUserData,
+    editedUserData,
+    setIsEditable,
+  } = useContext(AppContext);
 
   // Hook for navigation
   const navigate = useNavigate();

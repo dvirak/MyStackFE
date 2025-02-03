@@ -4,6 +4,7 @@ import { AppContext } from "../../../context/AppContextProvider";
 
 // ! ---------------- IMPORTED MODULES -------------------------
 import { useContext } from "react";
+import SubmitAccountChanges from "./SubmitAccountChanges";
 // ! -----------------------------------------------------------
 
 /**
@@ -19,7 +20,8 @@ import { useContext } from "react";
  */
 export default function EditAccountButtonDiv() {
   // Access global state function from context
-  const { setIsEditable } = useContext(AppContext);
+  const { userData, editedUserData, setEditeUserData, setIsEditable } =
+    useContext(AppContext);
 
   // Handles the cancel button click event. Exits edit mode by setting `isEditable` to false.
   function cancelEditClick(e) {
@@ -30,7 +32,14 @@ export default function EditAccountButtonDiv() {
   return (
     <div className="account-button-div">
       {/* Placeholder button for saving account changes (functionality not yet implemented) */}
-      <button className="save-account-changes-button">SAVE CHANGES</button>
+      <button
+        className="save-account-changes-button"
+        onClick={(e) =>
+          SubmitAccountChanges(e, userData, editedUserData, setEditeUserData)
+        }
+      >
+        SAVE CHANGES
+      </button>
 
       {/* Button to cancel editing and revert to view mode */}
       <button
