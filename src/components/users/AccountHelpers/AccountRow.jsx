@@ -10,8 +10,6 @@ export default function AccountRow({ field, value, isEditable }) {
     return;
   }
 
-  console.log("value: " + value);
-
   const handleChange = (e) => {
     setEditedUserData((prev) => ({
       ...prev,
@@ -20,11 +18,6 @@ export default function AccountRow({ field, value, isEditable }) {
   };
 
   const type = determineType(field);
-  console.log("type: " + type);
-
-  console.log("field: " + field);
-
-  console.log("Edited user data: " + editedUserData[field]);
 
   return (
     <tr>
