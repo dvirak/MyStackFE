@@ -1,18 +1,13 @@
-export default function SubmitAccountChanges(
-  e,
-  userData,
-  editedUserData,
-  setEditedUserData
-) {
+export default function SubmitAccountChanges(e, userData, editedUserData) {
   e.preventDefault();
 
-  let finalEditData = [];
+  let finalEditData = {};
 
   Object.entries(editedUserData).map(([key, value]) => {
     console.log("key: " + key);
     console.log("value: " + value);
-    if (editedUserData[key] && editedUserData[key] !== userData[key]) {
-      finalEditData.push(editedUserData[key]);
+    if (userData[key] && editedUserData[key] !== userData[key]) {
+      finalEditData[key] = value;
     }
   });
   console.log("editedUserData: ");
