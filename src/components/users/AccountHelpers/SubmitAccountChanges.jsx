@@ -1,7 +1,18 @@
-export default function SubmitAccountChanges(e, userData, editedUserData) {
+import updateUserAPI from "../../../API/UsersAPI/updateUser";
+
+export default async function SubmitAccountChanges(
+  e,
+  userData,
+  setUserData,
+  editedUserData,
+  setEditedUserData,
+  setIsEditable
+) {
   e.preventDefault();
 
   let finalEditData = {};
+
+  const userID = localStorage.getItem("user-id");
 
   Object.entries(editedUserData).map(([key, value]) => {
     console.log("key: " + key);
@@ -10,10 +21,20 @@ export default function SubmitAccountChanges(e, userData, editedUserData) {
       finalEditData[key] = value;
     }
   });
-  console.log("editedUserData: ");
-  console.log(editedUserData);
-  console.log("UserData: ");
-  console.log(userData);
-  console.log("finalEditedData: ");
-  console.log(finalEditData);
+
+  if (!finalEditData) {
+    setIsEditable(false);
+    setEditedUserData("");
+    return;
+  }
+
+  const response = await updateUserAPI(finalEditData);
+
+  let updatedUserData = response.updatedUser;
+
+  setUserData({ ...updatedUserData, id: userID });
+
+  setEditedUserData("");
+
+  setIsEditable(false);
 }

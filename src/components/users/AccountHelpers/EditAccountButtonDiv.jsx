@@ -20,13 +20,19 @@ import SubmitAccountChanges from "./SubmitAccountChanges";
  */
 export default function EditAccountButtonDiv() {
   // Access global state function from context
-  const { userData, editedUserData, setEditeUserData, setIsEditable } =
-    useContext(AppContext);
+  const {
+    userData,
+    setUserData,
+    editedUserData,
+    setEditedUserData,
+    setIsEditable,
+  } = useContext(AppContext);
 
   // Handles the cancel button click event. Exits edit mode by setting `isEditable` to false.
   function cancelEditClick(e) {
     e.preventDefault();
     setIsEditable(false);
+    setEditedUserData("");
   }
 
   return (
@@ -35,7 +41,14 @@ export default function EditAccountButtonDiv() {
       <button
         className="save-account-changes-button"
         onClick={(e) =>
-          SubmitAccountChanges(e, userData, editedUserData, setEditeUserData)
+          SubmitAccountChanges(
+            e,
+            userData,
+            setUserData,
+            editedUserData,
+            setEditedUserData,
+            setIsEditable
+          )
         }
       >
         SAVE CHANGES
