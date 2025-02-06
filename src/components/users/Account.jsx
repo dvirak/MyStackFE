@@ -7,7 +7,10 @@ import AccountButtonDiv from "./AccountHelpers/AccountButtonDiv";
 // ! -----------------------------------------------------------
 
 // ! ---------------- IMPORTED MODULES -------------------------
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import DeleteUserPopupInitial from "./DeleteUser/DeleteUserPopups/DeleteUserPopupInitial";
+import DeleteUserPopupConfirmUser from "./DeleteUser/DeleteUserPopups/DeleteUserPopupConfirmUser";
+import DeleteUserPopupFinalConfirmation from "./DeleteUser/DeleteUserPopups/DeleteUserPopupFinalConfirmatiopn";
 // ! -----------------------------------------------------------
 
 /**
@@ -18,7 +21,34 @@ import { useContext } from "react";
  * and any error messages when applicable.
  */
 export default function Account() {
-  const { isLoading, isEditable } = useContext(AppContext);
+  const {
+    isLoading,
+    isEditable,
+    setIsEditable,
+    deleteUserStep,
+    setDeleteUserStep,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    // Reset isEditable to false when the component unmounts
+    return () => {
+      setIsEditable(false);
+      // setDeleteUserStep(null);
+    };
+  }, []);
+
+  const renderPopup = () => {
+    switch (deleteUserStep) {
+      case 1:
+        return <DeleteUserPopupInitial />;
+      case 2:
+        return <DeleteUserPopupConfirmUser />;
+      case 3:
+        return <DeleteUserPopupFinalConfirmation />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -30,6 +60,8 @@ export default function Account() {
 
       {/* Displays Edit Account Buttons when editable, otherwise renders account buttons */}
       {isEditable ? <EditAccountButtonDiv /> : <AccountButtonDiv />}
+
+      {renderPopup()}
     </>
   );
 }
