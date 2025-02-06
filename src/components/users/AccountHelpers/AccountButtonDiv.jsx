@@ -6,6 +6,7 @@ import logOut from "../LoginHelpers/logOut";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContextProvider";
+import SubmitDeleteAccount from "../DeleteUser/SubmitDeleteAccount";
 // ! -----------------------------------------------------------
 
 /**
@@ -23,13 +24,8 @@ import { AppContext } from "../../../context/AppContextProvider";
  */
 export default function AccountButtonDiv() {
   // Access global state functions from context
-  const {
-    setErrorMessage,
-    userData,
-    setUserData,
-    editedUserData,
-    setIsEditable,
-  } = useContext(AppContext);
+  const { setErrorMessage, setUserData, setIsEditable, setDeleteUserStep } =
+    useContext(AppContext);
 
   // Hook for navigation
   const navigate = useNavigate();
@@ -38,6 +34,12 @@ export default function AccountButtonDiv() {
   function handleEditClick(e) {
     e.preventDefault();
     setIsEditable(true);
+  }
+
+  function handleDeleteClick(e) {
+    e.preventDefault();
+    setDeleteUserStep(1);
+    console.log("DELETE CLICKED!!!");
   }
 
   return (
@@ -61,7 +63,12 @@ export default function AccountButtonDiv() {
       </button>
 
       {/* Placeholder button for account deletion (not yet functional) */}
-      <button className="delete-account-button">DELETE ACCOUNT</button>
+      <button
+        className="delete-account-button"
+        onClick={(e) => handleDeleteClick(e)}
+      >
+        DELETE ACCOUNT
+      </button>
     </div>
   );
 }

@@ -24,6 +24,8 @@ export default function AppContextProvider({ children }) {
 
   const [editedUserData, setEditedUserData] = useState("");
 
+  const [deleteUserStep, setDeleteUserStep] = useState(null);
+
   return (
     <AppContext.Provider
       value={{
@@ -37,6 +39,8 @@ export default function AppContextProvider({ children }) {
         setIsEditable,
         editedUserData,
         setEditedUserData,
+        deleteUserStep,
+        setDeleteUserStep,
       }}
     >
       {children}
