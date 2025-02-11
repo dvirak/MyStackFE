@@ -28,6 +28,8 @@ export default function DeleteUserPopupConfirmUser() {
       <button
         onClick={async () => {
           const isConfirmed = await confirmUserAPI(username, password);
+          console.log("isConfirmed: ");
+          console.log(isConfirmed);
           if (isConfirmed) {
             setDeleteUserStep(3);
             setErrorMessage(""); // Clear error if successful
