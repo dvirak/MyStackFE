@@ -23,18 +23,19 @@ export default function DeleteUserPopupConfirmUser() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <button onClick={() => setDeleteUserStep(null)}>Cancel</button>
       <button
         onClick={async () => {
           const isConfirmed = await confirmUserAPI(username, password);
           console.log("isConfirmed: ");
-          console.log(isConfirmed);
-          if (isConfirmed) {
+          console.log(isConfirmed.status === true);
+          if (isConfirmed.status === true) {
             setDeleteUserStep(3);
             setErrorMessage(""); // Clear error if successful
           } else {
-            setErrorMessage("Invalid username or password.");
+            setErrorMessage(
+              isConfirmed.message || "Invalid username or password."
+            );
           }
         }}
       >
