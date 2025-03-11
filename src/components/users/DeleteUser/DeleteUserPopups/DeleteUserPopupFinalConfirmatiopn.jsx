@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../../../context/AppContextProvider";
 import deleteUserAPI from "../../../../API/UsersAPI/deleteUserAPI";
 import logOut from "../../LoginHelpers/logOut";
+import DeleteUser from "./DeleteUser";
 
 export default function DeleteUserPopupFinalConfirmation() {
   const {
@@ -21,13 +22,16 @@ export default function DeleteUserPopupFinalConfirmation() {
       </p>
       <button onClick={() => setDeleteUserStep(null)}>Cancel</button>
       <button
-        onClick={async (e) => {
-          let confirmDelete = await deleteUserAPI();
-          if (confirmDelete) {
-            setDeleteUserStep(null);
-            logOut(e, setErrorMessage, setUserData, setIsEditable, navigate);
-          } else setErrorMessage("An error occurred");
-        }}
+        onClick={async (e) =>
+          DeleteUser(
+            e,
+            setDeleteUserStep,
+            setErrorMessage,
+            setUserData,
+            setIsEditable,
+            navigate
+          )
+        }
       >
         Confirm
       </button>

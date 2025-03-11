@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../../../context/AppContextProvider";
 import confirmUserAPI from "../../../../API/UsersAPI/confirmUserAPI";
+import confirmUserForDelete from "./ConfirmUserForDelete";
 
 export default function DeleteUserPopupConfirmUser() {
   const { setDeleteUserStep, errorMessage, setErrorMessage } =
@@ -25,19 +26,14 @@ export default function DeleteUserPopupConfirmUser() {
       />
       <button onClick={() => setDeleteUserStep(null)}>Cancel</button>
       <button
-        onClick={async () => {
-          const isConfirmed = await confirmUserAPI(username, password);
-          console.log("isConfirmed: ");
-          console.log(isConfirmed.status === true);
-          if (isConfirmed.status === true) {
-            setDeleteUserStep(3);
-            setErrorMessage(""); // Clear error if successful
-          } else {
-            setErrorMessage(
-              isConfirmed.message || "Invalid username or password."
-            );
-          }
-        }}
+        onClick={async () =>
+          confirmUserForDelete(
+            username,
+            password,
+            setDeleteUserStep,
+            setErrorMessage
+          )
+        }
       >
         Confirm
       </button>
