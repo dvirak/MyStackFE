@@ -33,8 +33,8 @@ export default function InputField({ fieldName, userData, setUserData }) {
 
       {/* Render the input field with the determined type */}
       <input
-        type={type}
         id={fieldName}
+        type={type}
         name={fieldName}
         onChange={
           (e) =>

@@ -433,10 +433,50 @@ footer {
 /* Grid container for input fields */
 .register-input-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-columns: repeat(3, 1fr); /* Two columns */
   grid-gap: 20px; /* Spacing between grid items */
   width: 100%; /* Grid takes the full width of the form */
 }
+
+/* #username {
+  grid-row: 1;
+  grid-column: 3 / 5;
+}
+
+#password1 {
+  grid-row: 2;
+  grid-column: 2 / 4;
+}
+
+#password2 {
+  grid-row: 2;
+  grid-column: 4 / 6;
+}
+
+#first_name {
+  grid-row: 3;
+  grid-column: 1 / 3;
+}
+
+#last_name {
+  grid-row: 3;
+  grid-column: 3 / 5;
+}
+
+#preferred_name {
+  grid-row: 3;
+  grid-column: 5 / 7;
+}
+
+#phone {
+  grid-row: 4;
+  grid-column: 2 / 4;
+}
+
+#email {
+  grid-row: 4;
+  grid-column: 4 / 6;
+} */
 
 /* Input field styles */
 .register-input-grid input {
